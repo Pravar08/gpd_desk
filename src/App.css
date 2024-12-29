@@ -1,0 +1,27 @@
+@import "leaflet/dist/leaflet.css";
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar:horizontal{
+  height: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(110, 109, 109, 0.582);
+          box-shadow: inset 0 0 5px rgba(110, 109, 109, 0.582);
+  /* border-radius: 10px; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(110, 109, 109, 0.452);
+  /* border-radius: 10px; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #77727293;
+}
