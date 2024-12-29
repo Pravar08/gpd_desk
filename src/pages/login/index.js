@@ -10,6 +10,9 @@ import {
 } from '@mui/material';
 
 const LoginPage = () => {
+  const handleClick=()=>{
+    window.location.href="/dashboard"
+  }
   return (
     <Box
       sx={{
@@ -96,6 +99,7 @@ const LoginPage = () => {
         color="primary"
         fullWidth
         size="large"
+        onClick={handleClick}
       >
         Log In
       </Button>
