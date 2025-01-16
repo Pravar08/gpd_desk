@@ -122,7 +122,7 @@ const LoginPage = () => {
             <Box
               sx={{
                 height: 500,
-                backgroundImage: `url('https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`,
+                backgroundImage: `url('mapImg.jpg')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 position: 'relative',

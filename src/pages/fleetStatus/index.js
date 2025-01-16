@@ -138,7 +138,7 @@ const DashboardModuleWithTable = () => {
       <ContentWrapper>
         {/* Table */}
         {/* <Stack direction={'column'} spacing={1}   height={'600px'} sx={{background:'#fff',borderRadius:'8px',padding:'8px',width:"250px"}}> */}
-       <Card elevation={1} style={{width:'260px'}}>
+       <Card elevation={1} style={{width:'300px'}}>
           {/* <Typography sx={{fontSize:'14px'}} >
             Vehicle Fleet Status
           </Typography>
@@ -232,11 +232,11 @@ const DashboardModuleWithTable = () => {
         <Stack direction={"column"}>
         {!selectedRowId&&  
            <Fade in={!selectedRowId} timeout={300}>
-        <Card elevation={1} sx={{width:"100%",marginLeft:'10px',height:'85px'}}  >
-          <Stack direction={'row'} padding={1} spacing={5}  alignItems="center" divider={<Divider style={{background:"#3A4E61"}} orientation="vertical" flexItem />}>
-         
+        <Card elevation={1} sx={{width:"100%",marginLeft:'10px',height:'95px'}}  >
+          <Stack direction={'row'} padding={1} spacing={3}  alignItems="start" divider={<Divider style={{background:"#3A4E61"}} orientation="vertical" flexItem />}>
+     
         {/* <Stack direction={"column"}> */}
-          <Stack direction={"column"} >
+          <Stack direction={"column"}>
             <div>
             <DirectionsCarIcon fontSize="medium" color="success" />
             <Typography fontSize={'14px'} fontWeight={600}>
@@ -254,7 +254,7 @@ const DashboardModuleWithTable = () => {
           </Stack>
       {/* <HorizontalRule></HorizontalRule> */}
         {/* </Stack> */}
-        <Stack direction={"column"}>
+        <Stack direction={"column"} >
             <div>
             <PauseCircleOutlineIcon fontSize="medium" color="warning" />
             <Typography fontSize={'14px'} fontWeight={600}>
@@ -331,6 +331,7 @@ const DashboardModuleWithTable = () => {
         
             </div>
           </Stack>
+      
           </Stack>
           </Card>
           </Fade>
@@ -448,8 +449,8 @@ const DashboardModuleWithTable = () => {
 
 
 
-        <Card elevation={1} sx={{width:"100%",height:'85%',marginTop:'10px',marginLeft:'10px',backgroundImage: `url('/mapImg.jpg')`,   backgroundSize: 'cover',
-        backgroundPosition: 'center',}}  >
+        <Card elevation={1} sx={{minWidth:"100%",height:'85%',marginTop:'10px',marginLeft:'10px',backgroundImage: `url('/mapImg.jpg')`,   backgroundSize: 'cover',
+        backgroundPosition: 'center'}}  >
           </Card>
           </Stack>
           {selectedRowId?

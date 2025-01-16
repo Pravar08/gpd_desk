@@ -4,6 +4,8 @@ import Dashboard from "../pages/dashboard";
 import DashboardModuleWithTable from "../pages/fleetStatus";
 import LoginPage from "../pages/login";
 import VehicleManagement from "../pages/vehicleManagement";
+import RouteManagement from "../pages/routeManagement";
+import CustomerPage from "../pages/custmerManagement";
 
 export const routes = [
   {
@@ -29,5 +31,18 @@ export const routes = [
     icon: ManageAccounts,
     link: "/vehicle-management", // path as string
     component: <VehicleManagement />,
+  },
+  {
+    title: "Route Management",
+    icon: ManageAccounts,
+    link: "/route-management", // path as string
+    component: <RouteManagement />,
+  },
+
+  {
+    title: "Customer Management",
+    icon: ManageAccounts,
+    link: "/customer-management", // path as string
+    component: <CustomerPage />,
   },
 ];
