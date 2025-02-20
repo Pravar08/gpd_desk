@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Grid, Card, CardContent, Typography, styled } from "@mui/material";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import ComponentWrapper from "../../component/drawer";
 import TopAppBar from "../../component/appBar";
 import { AccessTime, CheckCircle, HourglassEmpty, LocalGasStation, PlayCircleFilled } from "@mui/icons-material";
+import { fetchGPSLogs } from "../../api/api";
 // import Header from "../../component/header";
 
 // Custom MUI Styles
@@ -84,6 +85,7 @@ const lineChartOptions = {
 };
 
 const Dashboard = () => {
+
   return (
 <DashboardContainer>
   <TopAppBar />

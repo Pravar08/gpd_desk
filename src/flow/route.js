@@ -6,6 +6,7 @@ import LoginPage from "../pages/login";
 import VehicleManagement from "../pages/vehicleManagement";
 import RouteManagement from "../pages/routeManagement";
 import CustomerPage from "../pages/custmerManagement";
+import AuditLog from "../pages/auditLogs";
 
 export const routes = [
   {
@@ -44,5 +45,11 @@ export const routes = [
     icon: ManageAccounts,
     link: "/customer-management", // path as string
     component: <CustomerPage />,
+  },
+  {
+    title: "Audit Logs",
+    icon: ManageAccounts,
+    link: "/audit-logs", // path as string
+    component: <AuditLog />,
   },
 ];
