@@ -21,6 +21,9 @@ import TimelineIcon from '@mui/icons-material/Timeline';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import SettingsRemoteIcon from '@mui/icons-material/SettingsRemote';
 import { CloudSync, Emergency, GpsFixed, Hvac, PowerSettingsNew, Sos } from "@mui/icons-material";
+import MapComponent from "../../component/map/map";
+import VehicleTracker from "../../component/map/vehicleTracker";
+import MultipleMarkersMap from "../../component/map/muntipleMarker";
 // Styled Components
 const DashboardContainer = styled(Box)({
   backgroundColor: "#F1F2F6",
@@ -105,6 +108,7 @@ const DashboardModuleWithTable = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedRow, setSelectedRow] = React.useState(null);
   const [selectedRowId, setSelectedRowId] = React.useState(null); // State for selected row ID
+  const [view,setView]=useState(0);
   const handleRowClick = (params) => {
     // Set the clicked row data to state
     setSelectedRow(params.row);
@@ -148,8 +152,8 @@ const DashboardModuleWithTable = () => {
             onChange={handleTabChange}
             centered
           >
-            <StyledTab icon={<PersonIcon />} aria-label="Driver" />
-            <StyledTab icon={<GarageIcon />} aria-label="Vehicle" />
+            <StyledTab icon={<PersonIcon />} onClick={()=>setView(1)} aria-label="Driver" />
+            <StyledTab icon={<GarageIcon />} onClick={()=>setView(0)} aria-label="Vehicle" />
             <StyledTab icon={<LocationOnIcon />} aria-label="Location" />
           </StyledTabs>
           <DataGrid
@@ -446,12 +450,12 @@ const DashboardModuleWithTable = () => {
 }
 
 
-
-
-
-        <Card elevation={1} sx={{minWidth:"100%",height:'85%',marginTop:'10px',marginLeft:'10px',backgroundImage: `url('/mapImg.jpg')`,   backgroundSize: 'cover',
+{view===0&&
+          <Card elevation={1} sx={{minWidth:"80%",height:'85%',marginTop:'10px',marginLeft:'10px',backgroundImage: `url('/mapImg.jpg')`,   backgroundSize: 'cover',
         backgroundPosition: 'center'}}  >
-          </Card>
+          <VehicleTracker/>
+          {/* <MultipleMarkersMap/> */}
+          </Card>}
           </Stack>
           {selectedRowId?
             <Fade in={selectedRowId} timeout={300}>
