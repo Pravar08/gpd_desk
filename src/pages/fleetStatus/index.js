@@ -58,7 +58,7 @@ const DashboardContainerOverall = styled(Box)({
   // backgroundColor: "#F1F2F6",
   // minHeight: "100vh",
   padding: "20px",
-  marginLeft: "50px", // Adjust this based on your navbar width
+  // marginLeft: "50px", // Adjust this based on your navbar width
 });
 
 
@@ -134,7 +134,7 @@ const DashboardModuleWithTable = () => {
   return (
     <DashboardContainer>
       <TopAppBar />
-      <ComponentWrapper />
+      {/* <ComponentWrapper /> */}
 
       
       <DashboardContainerOverall>

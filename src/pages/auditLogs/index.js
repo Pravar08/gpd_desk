@@ -19,9 +19,9 @@ export const AccountCardContainerr = styled(Box)({
 
 export const StyledBox = styled(Box)({
   background: "#ffffff",
-  marginLeft: "60px",
+  // marginLeft: "60px",
   marginTop: "20px",
-  width: "95%",
+  width: "100%",
   padding: 1,
   borderRadius: "8px",
 });
@@ -35,7 +35,7 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
   marginBottom: "10px",
 //   background:'white',
 // width:'30%',alignContent: 'center',alignItems: 'center',display:'flex',
-  marginLeft: "80px", // Align tabs to the left
+  // marginLeft: "80px", // Align tabs to the left
   "& .MuiTabs-indicator": {
     backgroundColor: "#3A4E61", // Active tab underline color
     height: "3px",
@@ -75,7 +75,7 @@ const fetchData = async() => {
   return (
     <DashboardContainer>
       <TopAppBar />
-      <ComponentWrapper />
+      {/* <ComponentWrapper /> */}
       <StyledTabs
         value={activeTab}
         onChange={handleTabChange}
