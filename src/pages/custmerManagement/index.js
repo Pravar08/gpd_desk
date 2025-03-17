@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   TextField,
@@ -16,6 +16,7 @@ import ComponentWrapper from '../../component/drawer';
 import TopCards from './topCards';
 import AccountCard from '../../component/accountCard';
 import { AddCircleOutlineOutlined, FilterAlt, GetApp, Search } from '@mui/icons-material';
+import AddCustomerModal from './customerModal';
 const DashboardContainer = styled(Box)({
     backgroundColor: "#F1F2F6",
     minHeight: "100vh",
@@ -56,7 +57,8 @@ const DashboardContainer = styled(Box)({
     borderRadius: "8px",
   });
 const CustomerPage = () => {
-
+  const [openModal,setOpenModal] =useState(false)
+const onClose=()=>setOpenModal(false)
   return (
     <DashboardContainer>
     <TopAppBar />
@@ -69,10 +71,10 @@ const CustomerPage = () => {
         <TopCards/>
         <StyledBox>
         <Stack direction={'row'} margin={1} spacing={2}>
-            <TextField label="Search" size='small' InputProps={{endAdornment:<IconButton><Search/></IconButton>}}/>
+            <TextField label="Search" size='small' InputProps={{endAdornment:<IconButton><Search/></IconButton>}} />
         <Button size="large" variant="contained" startIcon={<FilterAlt/>} sx={{fontSize:'14px'}}>Filter</Button>
         <Button size="large" variant="contained" sx={{fontSize:'14px'}} startIcon={<GetApp/>}>Export</Button>
-        <Button size="large" variant="contained" sx={{fontSize:'14px'}} startIcon={<AddCircleOutlineOutlined/>}>Add Customer</Button>
+        <Button size="large" variant="contained" sx={{fontSize:'14px'}} startIcon={<AddCircleOutlineOutlined/>} onClick={()=>setOpenModal(true)}>Add Customer</Button>
 
         </Stack>
         {/* <AccountCardContainerr> */}
@@ -122,6 +124,7 @@ const CustomerPage = () => {
         
     </ContentWrapper>
     </DashboardContainerOverall>
+    {openModal&&<AddCustomerModal onClose={()=>onClose()} open={openModal}/>}
     </DashboardContainer>
   );
 };

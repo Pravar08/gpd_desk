@@ -4,6 +4,7 @@ import TopAppBar from "../../component/appBar";
 import ComponentWrapper from "../../component/drawer";
 import { useState } from "react";
 import { AddCircleOutlineOutlined, FilterAlt, GetApp } from "@mui/icons-material";
+import VehicleRegistrationModal from "./addVehicleModal";
 
 export const AccountCardContainerr = styled(Box)({
   display: "grid",
@@ -58,6 +59,8 @@ const VehicleManagement = () => {
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
+    const [openModal,setOpenModal] =useState(false)
+  const onClose=()=>setOpenModal(false)
 
   return (
     <DashboardContainer>
@@ -77,7 +80,7 @@ const VehicleManagement = () => {
         <Stack direction={'row'} margin={1} spacing={2}>
         <Button size="large" variant="contained" startIcon={<FilterAlt/>} sx={{fontSize:'15px'}}>Filter</Button>
         <Button size="large" variant="contained" sx={{fontSize:'15px'}} startIcon={<GetApp/>}>Export</Button>
-        <Button size="large" variant="contained" sx={{fontSize:'15px'}} startIcon={<AddCircleOutlineOutlined/>}>Add Vehicle</Button>
+        <Button size="large" variant="contained" sx={{fontSize:'15px'}} startIcon={<AddCircleOutlineOutlined/>} onClick={()=>setOpenModal(true)}>Add Vehicle</Button>
 
         </Stack>
         {/* <AccountCardContainerr> */}
@@ -124,6 +127,9 @@ const VehicleManagement = () => {
           </AccountCardContainerr>
         {/* </AccountCardContainerr> */}
       </StyledBox>
+      {
+        openModal && <VehicleRegistrationModal open={openModal} onClose={()=>onClose()}/>
+      }
     </DashboardContainer>
   );
 };

@@ -7,6 +7,7 @@ import VehicleManagement from "../pages/vehicleManagement";
 import RouteManagement from "../pages/routeManagement";
 import CustomerPage from "../pages/custmerManagement";
 import AuditLog from "../pages/auditLogs";
+import DataGridWithTabs from "../pages/userManagement";
 
 export const routes = [
   {
@@ -51,5 +52,11 @@ export const routes = [
     icon: ManageAccounts,
     link: "/audit-logs", // path as string
     component: <AuditLog />,
+  },
+  {
+    title: "User Management",
+    icon: ManageAccounts,
+    link: "/usermanagement", // path as string
+    component: <DataGridWithTabs />,
   },
 ];

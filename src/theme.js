@@ -26,12 +26,15 @@ const theme = createTheme({
       fontWeight: 600,
     },
     body1: {
-      fontSize: '1rem',
+      fontSize: '12px',
       fontWeight: 400,
     },
     button: {
-      textTransform: 'none', // Disable uppercase transformation for buttons
+      textTransform: 'none',
+      fontSize: '12px',
+      fontWeight: 400,
     },
+    htmlFontSize:'12px'
   },
   components: {
     MuiButton: {
