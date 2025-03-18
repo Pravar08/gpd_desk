@@ -142,7 +142,7 @@ const DashboardModuleWithTable = () => {
       <ContentWrapper>
         {/* Table */}
         {/* <Stack direction={'column'} spacing={1}   height={'600px'} sx={{background:'#fff',borderRadius:'8px',padding:'8px',width:"250px"}}> */}
-       <Card elevation={1} style={{width:'300px'}}>
+       <Card elevation={1} style={{width:'20%'}}>
           {/* <Typography sx={{fontSize:'14px'}} >
             Vehicle Fleet Status
           </Typography>
@@ -233,11 +233,11 @@ const DashboardModuleWithTable = () => {
  </Card>
 
         {/* Map */}
-        <Stack direction={"column"}>
+        <Stack direction={"column"} width={!selectedRowId?'88%':'65%'}>
         {!selectedRowId&&  
            <Fade in={!selectedRowId} timeout={300}>
         <Card elevation={1} sx={{width:"100%",marginLeft:'10px',height:'95px'}}  >
-          <Stack direction={'row'} padding={1} spacing={3}  alignItems="start" divider={<Divider style={{background:"#3A4E61"}} orientation="vertical" flexItem />}>
+          <Stack direction={'row'} padding={1} spacing={3}  alignItems="center" justifyContent={'center'} divider={<Divider style={{background:"#3A4E61"}} orientation="vertical" flexItem />}>
      
         {/* <Stack direction={"column"}> */}
           <Stack direction={"column"}>
@@ -451,8 +451,7 @@ const DashboardModuleWithTable = () => {
 
 
 {view===0&&
-          <Card elevation={1} sx={{minWidth:"80%",height:'85%',marginTop:'10px',marginLeft:'10px',backgroundImage: `url('/mapImg.jpg')`,   backgroundSize: 'cover',
-        backgroundPosition: 'center'}}  >
+          <Card elevation={1} sx={{width:"100%",height:'85%',marginTop:'10px',marginLeft:'10px'}}  >
           <VehicleTracker/>
           {/* <MultipleMarkersMap/> */}
           </Card>}
