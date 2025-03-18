@@ -4,6 +4,8 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import TopAppBar from "../../component/appBar";
 import { Add } from "@mui/icons-material";
 import UserFormModal from "./userModal";
+import RoleManagementModal from "./roleModal";
+
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -25,8 +27,12 @@ const rows2 = [
 export default function DataGridWithTabs() {
   const [tabIndex, setTabIndex] = useState(0);
   const [openUser, setopenUser] = useState(false);
+  const [openUser1, setopenUser1] = useState(false);
+
   
 const onClose=()=>setopenUser(false)
+const onClose1=()=>setopenUser1(false)
+
   return (
     <Box sx={{ width: "100%" }}>
       {/* Tabs */}
@@ -48,11 +54,18 @@ const onClose=()=>setopenUser(false)
               <Tabs value={tabIndex} onChange={(_, newValue) => setTabIndex(newValue)}>
         <Tab label="Active User" sx={{fontSize:'12px'}}/>
         <Tab label="In-Active User" sx={{fontSize:'12px'}} />
+        <Tab label="Roles" sx={{fontSize:'12px'}} />
+
       </Tabs>
  <Stack direction={'row'}>
     <div style={{padding:'7px 4px 0px',alignItems:'center'}}>
         <Button startIcon={<Add/>} sx={{fontSize:'12px',lineHeight:1.75}} onClick={()=>setopenUser(true)}>
           Add User
+        </Button>
+        </div>
+        <div style={{padding:'7px 4px 0px',alignItems:'center'}}>
+        <Button startIcon={<Add/>} sx={{fontSize:'12px',lineHeight:1.75}} onClick={()=>setopenUser1(true)}>
+          Add Role
         </Button>
         </div>
               <GridToolbar />
@@ -112,6 +125,8 @@ const onClose=()=>setopenUser(false)
         />
       </Box>
       {openUser&&<UserFormModal onClose={()=>onClose()} open={openUser}/>}
+      {openUser1&&<RoleManagementModal onClose={()=>onClose1()} open={openUser1}/>}
+
     </Box>
   );
 }

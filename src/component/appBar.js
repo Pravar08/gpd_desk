@@ -56,6 +56,7 @@ const TopAppBar = () => {
               sx={{
                 color: "white",
                 textTransform: "none",
+                fontSize:'12px',
                 "&.active": { fontWeight: "bold", borderBottom: "2px solid white" },
               }}
             >

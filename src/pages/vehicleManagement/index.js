@@ -5,6 +5,7 @@ import ComponentWrapper from "../../component/drawer";
 import { useState } from "react";
 import { AddCircleOutlineOutlined, FilterAlt, GetApp } from "@mui/icons-material";
 import VehicleRegistrationModal from "./addVehicleModal";
+import DriverRegistrationModal from "./addDriverModal";
 
 export const AccountCardContainerr = styled(Box)({
   display: "grid",
@@ -17,10 +18,13 @@ export const AccountCardContainerr = styled(Box)({
 
 export const StyledBox = styled(Box)({
   background: "#ffffff",
-  // marginLeft: "60px",
+  marginLeft: "10px",
+  marginRight: "10px",
+
   marginTop: "20px",
-  width: "100%",
-  padding: 1,
+  // width: "100%",
+  padding: 2,
+  // margin:1,
   borderRadius: "8px",
 });
 
@@ -80,7 +84,7 @@ const VehicleManagement = () => {
         <Stack direction={'row'} margin={1} spacing={2}>
         <Button size="large" variant="contained" startIcon={<FilterAlt/>} sx={{fontSize:'15px'}}>Filter</Button>
         <Button size="large" variant="contained" sx={{fontSize:'15px'}} startIcon={<GetApp/>}>Export</Button>
-        <Button size="large" variant="contained" sx={{fontSize:'15px'}} startIcon={<AddCircleOutlineOutlined/>} onClick={()=>setOpenModal(true)}>Add Vehicle</Button>
+        <Button size="large" variant="contained" sx={{fontSize:'15px'}} startIcon={<AddCircleOutlineOutlined/>} onClick={()=>setOpenModal(true)}>{activeTab===1?"Add Vehicle":"Add Driver"}</Button>
 
         </Stack>
         {/* <AccountCardContainerr> */}
@@ -128,7 +132,10 @@ const VehicleManagement = () => {
         {/* </AccountCardContainerr> */}
       </StyledBox>
       {
-        openModal && <VehicleRegistrationModal open={openModal} onClose={()=>onClose()}/>
+        openModal&&activeTab===0  && <DriverRegistrationModal open={openModal} onClose={()=>onClose()}/>
+      }
+      {
+        openModal&&activeTab===1 && <VehicleRegistrationModal open={openModal} onClose={()=>onClose()}/>
       }
     </DashboardContainer>
   );

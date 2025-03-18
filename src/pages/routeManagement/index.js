@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import { Box, AppBar, Tabs, Tab, Toolbar, Typography, Paper, Stack, Card, Divider, Fade, ToggleButton, LinearProgress } from "@mui/material";
-import { DataGrid, GridToolbar, GridToolbarColumnsButton, GridToolbarContainer, GridToolbarExport, GridToolbarFilterButton } from "@mui/x-data-grid";
+import { Box, AppBar, Tabs, Tab, Toolbar, Typography, Paper, Stack, Card, Divider, Fade, ToggleButton, LinearProgress, Button } from "@mui/material";
+import { DataGrid, GridToolbar, GridToolbarColumnsButton, GridToolbarContainer, GridToolbarExport, GridToolbarFilterButton, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import TopAppBar from "../../component/appBar";
 import ComponentWrapper from "../../component/drawer";
 // import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
@@ -20,7 +20,8 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import SettingsRemoteIcon from '@mui/icons-material/SettingsRemote';
-import { CheckCircleOutline, CloudSync, Emergency, GpsFixed, Hvac, PowerSettingsNew, Sos } from "@mui/icons-material";
+import { Add, CheckCircleOutline, CloudSync, Emergency, GpsFixed, Hvac, PowerSettingsNew, Sos } from "@mui/icons-material";
+import AddRouteModal from "./addRoute";
 // Styled Components
 const DashboardContainer = styled(Box)({
   backgroundColor: "#F1F2F6",
@@ -114,7 +115,9 @@ const columns = [
 const RouteManagement = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedRow, setSelectedRow] = React.useState(null);
-  const [selectedRowId, setSelectedRowId] = React.useState(null); // State for selected row ID
+  const [selectedRowId, setSelectedRowId] = React.useState(null); // State for selected row ID\
+    const [openUser, setopenUser] = useState(false);
+    const onClose=()=>setopenUser(false)
   const handleRowClick = (params) => {
     // Set the clicked row data to state
     setSelectedRow(params.row);
@@ -153,7 +156,7 @@ const RouteManagement = () => {
             Vehicle Fleet Status
           </Typography>
           </div> */}
-           <Stack alignContent={"center"}>
+           {/* <Stack alignContent={"center"}>
            <ToggleButton
            
   value="check"
@@ -162,7 +165,15 @@ const RouteManagement = () => {
 >
   <CheckCircleOutline />
 </ToggleButton>
-</Stack>
+<ToggleButton
+           
+           value="check"
+         //   selected={selected}
+         //   onChange={() => setSelected((prevSelected) => !prevSelected)}
+         >
+           <CheckCircleOutline />
+         </ToggleButton>
+</Stack> */}
           <DataGrid
             rows={rows}
             columns={columns}
@@ -178,13 +189,30 @@ const RouteManagement = () => {
             // selectionModel={selectedRowId ? [selectedRowId] : []} // Highlight selected row
             checkboxSelection={false} 
             // disableSelectionOnClick
-            slots={{
-             toolbar:CustomToolbar // Add the custom toolbar
-            }}
+            slots={{ toolbar: () => (
+              <Box sx={{ display: "flex", justifyContent:'space-between' }}>
+                {/* <Tabs value={tabIndex} onChange={(_, newValue) => setTabIndex(newValue)}>
+          <Tab label="Active User" sx={{fontSize:'12px'}}/>
+          <Tab label="In-Active User" sx={{fontSize:'12px'}} />
+        </Tabs> */}
+   <Stack direction={'row'}>
+      <div style={{padding:'2px 2px 0px',alignItems:'center'}}>
+          <Button startIcon={<Add/>} sx={{fontSize:'0.8125rem',lineHeight:1.75}} onClick={()=>setopenUser(true)}>
+            Add Route
+          </Button>
+          </div>
+          {/* <GridToolbarQuickFilter> */}
+          <GridToolbarFilterButton  />
+
+                <GridToolbarExport />
+                </Stack>
+  
+              </Box>
+            )}}
         
             // style={{ S}}
             sx={{
-              height:'500px',
+              height:'600px',
               // Set text size
               "& .MuiDataGrid-cell": {
                 fontSize: "10px",
@@ -258,6 +286,8 @@ const RouteManagement = () => {
           </Stack>
     </ContentWrapper>
       </DashboardContainerOverall>
+      {openUser&&
+      <AddRouteModal onClose={()=>onClose()} open={openUser}/>}
     </DashboardContainer>
   );
 };

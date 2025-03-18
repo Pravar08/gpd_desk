@@ -115,7 +115,7 @@ export default function VehicleRegistrationModal({ onClose, open }) {
           </IconButton>
         </Box>
 
-       <Box sx={{ p: 2,maxHeight:420,overflowY:'auto'}}>
+       <Box sx={{ p: 2,maxHeight:450,overflowY:'auto'}}>
           {/* Identification */}
           <Typography
                    fontSize="15px"
