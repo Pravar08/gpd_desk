@@ -22,6 +22,7 @@ import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import SettingsRemoteIcon from '@mui/icons-material/SettingsRemote';
 import { Add, CheckCircleOutline, CloudSync, Emergency, GpsFixed, Hvac, PowerSettingsNew, Sos } from "@mui/icons-material";
 import AddRouteModal from "./addRoute";
+import MultipleMarkersMap from "../../component/map/muntipleMarker";
 // Styled Components
 const DashboardContainer = styled(Box)({
   backgroundColor: "#F1F2F6",
@@ -268,7 +269,7 @@ const RouteManagement = () => {
  </Card>
 
         {/* Map */}
-        <Stack width={"90%"}>
+        {/* <Stack width={"90%"}> */}
 
 
            <Fade in timeout={300}>
@@ -279,11 +280,13 @@ const RouteManagement = () => {
 
 
 
-        <Card elevation={1} sx={{width:"100%",height:'100%',backgroundImage: `url('/mapImg.jpg')`,   backgroundSize: 'cover',
-        backgroundPosition: 'center'}}  >
+        <Card elevation={1} sx={{width:"100%"
+        
+        }}  >
+        <MultipleMarkersMap/>
           </Card>
           </Fade>
-          </Stack>
+          {/* </Stack> */}
     </ContentWrapper>
       </DashboardContainerOverall>
       {openUser&&
