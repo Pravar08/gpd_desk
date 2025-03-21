@@ -29,6 +29,7 @@ import React from "react";
 import { AppBar, Box, Toolbar, Button } from "@mui/material";
 import { NavLink, useLocation } from "react-router-dom";
 import { routes } from "../flow/route";
+import NavigationSpeedDial from "./speedDial";
 
 const TopAppBar = () => {
   const location = useLocation();
@@ -63,6 +64,7 @@ const TopAppBar = () => {
               {route.title} {/* Assuming each route has a 'name' property */}
             </Button>
           ))}
+         <NavigationSpeedDial/>
         </Box>
       </Toolbar>
     </AppBar>

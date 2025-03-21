@@ -10,6 +10,8 @@ import {
   styled,
   Stack,
   IconButton,
+  Tab,
+  Tabs,
 } from '@mui/material';
 import TopAppBar from '../../component/appBar';
 import ComponentWrapper from '../../component/drawer';
@@ -56,8 +58,36 @@ const DashboardContainer = styled(Box)({
     padding: 1,
     borderRadius: "8px",
   });
+  const StyledTabs = styled(Tabs)(({ theme }) => ({
+  //   background:'white',
+  // width:'30%',alignContent: 'center',alignItems: 'center',display:'flex',
+    // marginLeft: "80px",  // Align tabs to the left
+    "& .MuiTabs-indicator": {
+      backgroundColor: "#3A4E61", // Active tab underline color
+      height: "3px",
+    },
+  }));
+  
+  const StyledTab = styled(Tab)(({ theme }) => ({
+    textTransform: "none",
+    fontWeight: 600,
+    fontSize: "14px",
+    color: "#6c757d",
+    "&.Mui-selected": {
+      color: "#3A4E61",
+      backgroundColor: "white", // Active tab underline color
+  
+      // Active tab text color
+    },
+  }));
+  
 const CustomerPage = () => {
   const [openModal,setOpenModal] =useState(false)
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
+  };
 const onClose=()=>setOpenModal(false)
   return (
     <DashboardContainer>
@@ -70,12 +100,23 @@ const onClose=()=>setOpenModal(false)
     <ContentWrapper>
         <TopCards/>
         <StyledBox>
-        <Stack direction={'row'} margin={1} spacing={2}>
-            <TextField label="Search" size='small' InputProps={{endAdornment:<IconButton><Search/></IconButton>}} />
+        <Stack direction={'row'} margin={1} spacing={2} justifyContent={'space-between'}>
+        <StyledTabs
+        value={activeTab}
+        onChange={handleTabChange}
+        indicatorColor="primary"
+        textColor="primary"
+    
+      >
+        <StyledTab label="Active"/>
+        <StyledTab label="In-Active" />
+      </StyledTabs>
+      <Stack direction={'row'}  spacing={2}>
+
         <Button size="large" variant="contained" startIcon={<FilterAlt/>} sx={{fontSize:'14px'}}>Filter</Button>
         <Button size="large" variant="contained" sx={{fontSize:'14px'}} startIcon={<GetApp/>}>Export</Button>
         <Button size="large" variant="contained" sx={{fontSize:'14px'}} startIcon={<AddCircleOutlineOutlined/>} onClick={()=>setOpenModal(true)}>Add Customer</Button>
-
+</Stack>
         </Stack>
         {/* <AccountCardContainerr> */}
           <AccountCardContainerr>

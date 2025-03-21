@@ -21,7 +21,7 @@ import CloseIcon from "@mui/icons-material/Close";
 const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid"];
 const transmissionTypes = ["Manual", "Automatic"];
 const companyTypes = ["IT", "Manufacturing", "Transportation"];
-const sensorOptions = ["AC", "Power", "ACC", "Charging"];
+const sensorOptions = ["AC", "Power", "ACC", "Charging","SOS"];
 
 export default function VehicleRegistrationModal({ onClose, open }) {
   const [formData, setFormData] = useState({
@@ -132,9 +132,11 @@ export default function VehicleRegistrationModal({ onClose, open }) {
             <Grid item xs={4}><TextField fullWidth label="VIN (Chassis No.)" name="vin" onChange={handleChange} /></Grid>
             <Grid item xs={4}><TextField fullWidth label="IMEI Number" name="imei" onChange={handleChange} /></Grid>
             <Grid item xs={4}><TextField fullWidth label="Company Name" name="companyName" onChange={handleChange} /></Grid>
-            <Grid item xs={4}><TextField fullWidth label="Device Type" name="deviceType" onChange={handleChange} /></Grid>
+            <Grid item xs={4}><TextField fullWidth label="Company Branch" name="companyBranch" onChange={handleChange} /></Grid>
+
             <Grid item xs={6}><TextField fullWidth label="SIM Number" name="simNumber" onChange={handleChange} /></Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6}><TextField fullWidth label="Device Type" name="deviceType" onChange={handleChange} /></Grid>
+            <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel>Sensors Taken</InputLabel>
                 <Select multiple value={formData.sensorsTaken} onChange={handleMultiSelectChange} input={<OutlinedInput label="Sensors Taken" />}>
@@ -235,6 +237,8 @@ export default function VehicleRegistrationModal({ onClose, open }) {
 <Grid item xs={4}><TextField fullWidth label="Owner Address" name="ownerAddress" onChange={handleChange} /></Grid>
 <Grid item xs={4}><TextField fullWidth label="Owner Aadhar" name="ownerAadhar" onChange={handleChange} /></Grid>
 <Grid item xs={4}><TextField fullWidth label="Owner DL" name="ownerDL" onChange={handleChange} /></Grid>
+<Grid item xs={4}><TextField fullWidth label="Subscription Expiry" name="expiryrDate" type="date"   InputLabelProps={{ shrink: true }} onChange={handleChange} /></Grid>
+
 
 </Grid>
           {/* Buttons */}

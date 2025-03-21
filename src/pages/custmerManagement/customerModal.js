@@ -9,11 +9,18 @@ import {
   MenuItem,
   Grid,
   IconButton,
+  Chip,
+  Stack,
+  FormControl,
+  InputLabel,
+  Select,
+  OutlinedInput,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 const companyTypes = ["IT", "Manufacturing", "Transportation", "Retail", "Finance"];
 const roles = ["Supervisor", "Manager", "Owner", "Director", "Executive"];
+const sensorOptions = ["Ignition On" ,"gnition Off","Power Cut","Restore","Overspeed"]
 
 export default function AddCustomerModal({ onClose, open }) {
   const [formData, setFormData] = useState({
@@ -30,7 +37,22 @@ export default function AddCustomerModal({ onClose, open }) {
     mobile: "",
     email: "",
     username: "",
+    sensorsTaken:[]
   });
+  const [chips, setChips] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && inputValue.trim() !== "") {
+      event.preventDefault(); // Prevents form submission
+      setChips([...chips, inputValue.trim()]);
+      setInputValue(""); // Clear input after adding
+    }
+  };
+
+  const handleDelete = (chipToDelete) => {
+    setChips(chips.filter((chip) => chip !== chipToDelete));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +65,13 @@ export default function AddCustomerModal({ onClose, open }) {
 
   const handleSubmit = () => {
     console.log("Customer Data Submitted:", formData);
+  };
+
+  const handleMultiSelectChange = (event) => {
+    setFormData((prev) => ({
+      ...prev,
+      sensorsTaken: event.target.value,
+    }));
   };
 
   return (
@@ -71,7 +100,7 @@ export default function AddCustomerModal({ onClose, open }) {
           }}
         >
           <Typography variant="h4" fontWeight={600} color="primary">
-            Create New User
+            Create New Customer
           </Typography>
           <IconButton onClick={onClose}>
             <CloseIcon />
@@ -169,7 +198,58 @@ export default function AddCustomerModal({ onClose, open }) {
               />
             </Grid>
           </Grid>
+          <Divider sx={{ my: 2, color: "#3A4E61" }} />
 
+{/* Contact Person Details Section */}
+<Typography
+  fontSize="15px"
+  fontWeight={500}
+  color="primary"
+  mb={1.5}
+  sx={{ textDecoration: "underline" }}
+>
+  Branches & Notifications
+</Typography>
+<Grid container spacing={2}>
+<Grid item xs={12}>
+<Stack direction="row" spacing={1} flexWrap="wrap" sx={{ mb: 2, rowGap: 0.5}}>
+{chips.map((chip, index) => (
+<Chip
+
+  key={index}
+  label={chip}
+  onDelete={() => handleDelete(chip)}
+  color="primary"
+/>
+))}
+</Stack>
+<TextField
+fullWidth
+label="Enter branch and press enter"
+variant="outlined"
+value={inputValue}
+onChange={(e) => setInputValue(e.target.value)}
+onKeyDown={handleKeyDown}
+/>
+</Grid>
+
+{/* Text Field Input */}
+
+  </Grid>
+  <Grid container spacing={2} marginTop={'6px'}>
+<Grid item xs={12}>
+<FormControl fullWidth>
+      <InputLabel>Notification Given</InputLabel>
+      <Select multiple value={formData.sensorsTaken} onChange={handleMultiSelectChange} input={<OutlinedInput label="Notification required" />}>
+        {sensorOptions.map((sensor) => (
+          <MenuItem key={sensor} value={sensor}>
+            <Chip label={sensor} sx={{padding:0,fontSize:'12px',height:'24px'}}/>
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+</Grid>
+</Grid>
           <Divider sx={{ my: 2, color: "#3A4E61" }} />
 
           {/* Contact Person Details Section */}
@@ -237,7 +317,8 @@ export default function AddCustomerModal({ onClose, open }) {
               />
             </Grid>
           </Grid>
-
+          
+      
           {/* Buttons */}
       
         </Box>

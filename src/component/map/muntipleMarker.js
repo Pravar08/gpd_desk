@@ -28,6 +28,31 @@ const MultipleMarkersMap = () => {
     } else {
       console.error("❌ Mappls SDK not loaded. Ensure it's included in index.html.");
     }
+    function extractIMEIFromPacket(packetHex) {
+      // Convert hex string into an array of bytes
+      let bytes = packetHex.split(" ").map(hex => hex.replace("0x", ""));
+  
+      // Terminal ID is located at bytes index 4 to 11 (8 bytes)
+      let terminalIDBytes = bytes.slice(4, 12);
+  
+      // Convert BCD encoded bytes to a string
+      let imei = terminalIDBytes.map(byte => byte.padStart(2, '0')).join("");
+  
+      // Ensure it's 15 digits by removing any leading zero
+      if (imei.length === 16 && imei.startsWith("0")) {
+          imei = imei.slice(1);
+      }
+  
+      return imei;
+  }
+  
+  // Example Usage
+  let packetData = "78 78 11 01 07 52 53 36 78 90 02 42 70 00 32 01 00 05 12 79 0D 0A";
+  console.log(extractIMEIFromPacket(packetData));
+  
+  // Example Usage
+  let terminalID = "0x01 0x23 0x45 0x67 0x89 0x01 0x23 0x45";
+  console.log("terminalID",extractIMEIFromPacket(packetData)); 
   }, []);
 
   const initMap = () => {

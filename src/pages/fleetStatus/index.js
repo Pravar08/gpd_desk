@@ -496,7 +496,27 @@ const DashboardModuleWithTable = () => {
              </div>
              <div>
              <Typography fontSize={'12px'} fontWeight={600}>
-            Last Trip (Kms) : 999999999
+            KMs Travelled : 12Km
+         </Typography>
+         
+             </div>
+
+             <div>
+             <Typography fontSize={'12px'} fontWeight={600}>
+            Odometer (Kms) : 999999999
+         </Typography>
+         
+             </div>
+             <div>
+             <Typography fontSize={'12px'} fontWeight={600}>
+            Avg Speed : 20Km/h
+         </Typography>
+         
+             </div>
+
+             <div>
+             <Typography fontSize={'12px'} fontWeight={600}>
+ Current Speed : 20Km/h
          </Typography>
          
              </div>
