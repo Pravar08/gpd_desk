@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   TextField,
@@ -19,6 +19,7 @@ import TopCards from './topCards';
 import AccountCard from '../../component/accountCard';
 import { AddCircleOutlineOutlined, FilterAlt, GetApp, Search } from '@mui/icons-material';
 import AddCustomerModal from './customerModal';
+import { fetchomer } from '../../api/api';
 const DashboardContainer = styled(Box)({
     backgroundColor: "#F1F2F6",
     minHeight: "100vh",
@@ -84,10 +85,23 @@ const DashboardContainer = styled(Box)({
 const CustomerPage = () => {
   const [openModal,setOpenModal] =useState(false)
   const [activeTab, setActiveTab] = useState(0);
+  const [data,setData]=useState([])
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
+
+useEffect(()=>{
+fetchData()
+},[])
+
+
+  const fetchData=async()=>{
+    
+const fetch=await fetchomer()
+console.log('check data',fetch)
+setData(fetch.data)
+  }
 const onClose=()=>setOpenModal(false)
   return (
     <DashboardContainer>
@@ -120,45 +134,13 @@ const onClose=()=>setOpenModal(false)
         </Stack>
         {/* <AccountCardContainerr> */}
           <AccountCardContainerr>
-            <Box>
-              <AccountCard />
-            </Box>
-            <Box>
-              <AccountCard />
-            </Box>
-            <Box>
-              <AccountCard />
-            </Box>
-
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
-            <AccountCard />
+          {data.length === 0 ? (
+  <Typography>No customers found</Typography>
+) : (
+  data.map((customer, index) => (
+    <AccountCard key={index} data={customer} />
+  ))
+)}
           </AccountCardContainerr>
         {/* </AccountCardContainerr> */}
       </StyledBox>

@@ -1,7 +1,10 @@
-import { ContactPageOutlined } from "@mui/icons-material";
-import { Link, Typography, styled } from "@mui/material";
+import { ContactPageOutlined,
+} from "@mui/icons-material";
+import { IconButton, Link, Typography, styled } from "@mui/material";
 import React from "react";
-
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+// import EditDocumentIcon from '@mui/icons-material/EditDocument';
+import EditNoteIcon from '@mui/icons-material/EditNote';
  const StyledAccountContainer=styled('div')({
     padding:'10px',
     backgroundColor:'rgba(58,78,97,0.10)',
@@ -42,7 +45,7 @@ color:'#3A4E61'
  const StyledHeading=styled(Typography)({
     fontWeight:600,
     padding:'2px',
-    color:'#3A4E61',fontSize:'16px',
+    color:'#3A4E61',fontSize:'16px',marginTop:'4px'
 })
 
  const StyledUl=styled('ul')({
@@ -80,79 +83,87 @@ color:'#3A4E61'
 
 
 
-const AccountCard=()=>{
+const AccountCard=({data})=>{
     return(
         <StyledAccountContainer>
      <StyledHeaderContainer>
         <IconTextContainer>
             <ContactPageOutlined fontSize="large"/>
-            <StyledHeading>Account</StyledHeading>
+            <StyledHeading>{data.company_name}</StyledHeading>
         </IconTextContainer>
-        <StyledLink>
-            Account No
-        </StyledLink>
+        <IconTextContainer>
+       <IconButton>
+<EditNoteIcon/></IconButton>
+<IconButton>
+<DeleteForeverIcon/>
+
+</IconButton>
+
+        </IconTextContainer>
+
      </StyledHeaderContainer>
      <StyledUl>
         <ListContainer>
             <LeftListContainer>
-            Detail 1
+           Company Type
             <ColonContainer>:</ColonContainer>
             </LeftListContainer>
             <RightListContainer>
-            Value 1
+            {data.company_type}
             </RightListContainer>
 
         </ListContainer>
         <ListContainer>
             <LeftListContainer>
-            Detail 1
+            Contact No.
             <ColonContainer>:</ColonContainer>
             </LeftListContainer>
             <RightListContainer>
-            Value 1
+            {data.official_contact}
             </RightListContainer>
 
         </ListContainer>
         <ListContainer>
             <LeftListContainer>
-            Detail 1
+            Contact Person 
             <ColonContainer>:</ColonContainer>
             </LeftListContainer>
             <RightListContainer>
-            Value 1
+            {data.contact_name}
             </RightListContainer>
 
         </ListContainer>
         <ListContainer>
             <LeftListContainer>
-            Detail 1
+            Official Contact
             <ColonContainer>:</ColonContainer>
             </LeftListContainer>
             <RightListContainer>
-            Value 1
+            {data.mobile}
             </RightListContainer>
 
         </ListContainer>
         <ListContainer>
             <LeftListContainer>
-            Detail 1
+            Email
             <ColonContainer>:</ColonContainer>
             </LeftListContainer>
             <RightListContainer>
-            Value 1
+           {data.email}
             </RightListContainer>
 
         </ListContainer>
         <ListContainer>
             <LeftListContainer>
-            Detail 1
+           Location
             <ColonContainer>:</ColonContainer>
             </LeftListContainer>
             <RightListContainer>
-            Value 1
+           {data.state}
             </RightListContainer>
 
         </ListContainer>
+       
      </StyledUl>
         </StyledAccountContainer>
     )
